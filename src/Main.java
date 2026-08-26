@@ -1,6 +1,9 @@
 import model.Student;
 import model.Job;
-import java.util.ArrayList;
+import service.JobService;
+import service.StudentService;
+import service.RecommendationService;
+
 public class Main {
     public static void main(String[] args) {
         Student s1=new Student("John Doe", 1, "CSE",
@@ -19,40 +22,19 @@ public class Main {
 
         job1.displayJob();
 
-         ArrayList<Student> students=new ArrayList<>();
-         students.add(s1);
-         students.add(s2);
-         students.add(s3);
+         StudentService service=new StudentService();
+         service.addStudent(s1);
+         service.addStudent(s2);
+         service.addStudent(s3);
+         service.viewStudents();
 
-         ArrayList<Job> jobs=new ArrayList<>();
-         jobs.add(job1);
-         jobs.add(job2);
-
-        //  for(Student s: students){
-        //     if(s.getId()==sid){
-        //         s.displayStudent();
-        //         found=true;
-        //         break;
-        //     }}
-        //     if(!found){
-        //         System.out.println("Student with id "+sid+" not found.");
-        //     }
-
+         JobService jobService = new JobService();
+         jobService.addJob(job1);
+         jobService.addJob(job2);
+         jobService.viewJobs();
         
-         for (Student s :students){
-            for(Job j:jobs){
-            if(s.getCgpa()>=j.getMinimumCgpa() && s.getSkills().contains(j.getRequiredSkills())){ 
-                System.out.println("\n---------------------------");
-                System.out.println(s.getName()+" : "+s.getCgpa()+" :Eligible for "+
-                j.getTitle()+" at "+j.getCompany());  
-                
-                // s.displayStudent();
-         }else{
-        System.out.println("\n---------------------------");
-        System.out.println(s.getName()+": "+s.getCgpa()+" Not eligible  for "
-        +j.getTitle()+" at "+j.getCompany());
-        }
-    }
-    }
+        RecommendationService recommendationService = new RecommendationService();
+        recommendationService.recommendJobs(service.getStudents(), jobService.getJobs());
+
 }
 }
