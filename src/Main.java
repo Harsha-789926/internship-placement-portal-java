@@ -1,8 +1,12 @@
 import model.Student;
 import model.Job;
+import model.Application;
+import model.Company;   
 import service.JobService;
 import service.StudentService;
 import service.RecommendationService;
+import service.ApplicationService;
+import service.CompanyService;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,7 +24,7 @@ public class Main {
         Job job2 = new Job(2, "Data Analyst", "Data Inc", 
         9.0, "SQL");
 
-        job1.displayJob();
+        
 
          StudentService service=new StudentService();
          service.addStudent(s1);
@@ -32,9 +36,39 @@ public class Main {
          jobService.addJob(job1);
          jobService.addJob(job2);
          jobService.viewJobs();
+
+        
         
         RecommendationService recommendationService = new RecommendationService();
         recommendationService.recommendJobs(service.getStudents(), jobService.getJobs());
+        
+        ApplicationService applicationService = new ApplicationService();
+        applicationService.applyForJob(1, s1.getId(), job1.getId());
+        applicationService.viewApplications();
+        applicationService.updateStatus(1, "Shortlisted");
+        applicationService.viewApplications();
 
-}
+        Application foundApplication = applicationService.getApplicationById(1);
+        if(foundApplication!=null){
+            foundApplication.displayApplication();      
+        }else{
+            
+            System.out.println("Application not found.");
+        }
+    
+        Company c1 = new Company(1, "Tech Corp", "hr@techcorp.com", "Mysore");   
+
+        CompanyService companyService = new CompanyService();
+        companyService.addCompany(c1);
+        companyService.viewCompanies();
+
+        Company foundCompany = companyService.getCompanyById(1);
+
+        if(foundCompany!=null){
+            foundCompany.displayCompany();
+        }else{
+            System.out.println("Company not found.");
+        }
+    
+    } 
 }
