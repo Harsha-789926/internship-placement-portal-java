@@ -9,6 +9,10 @@ public class User {
         this.name=name;
     }
 
+    public int getId(){
+        return id;
+    }
+
     public void  displayuser(){
         System.out.println("User ID: " + id);
         System.out.println("User Name: " + name);

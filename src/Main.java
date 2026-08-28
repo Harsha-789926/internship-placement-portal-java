@@ -2,11 +2,13 @@ import model.Student;
 import model.Job;
 import model.Application;
 import model.Company;   
+import model.Admin;
 import service.JobService;
 import service.StudentService;
 import service.RecommendationService;
 import service.ApplicationService;
 import service.CompanyService;
+import service.AdminService;
 
 public class Main {
     public static void main(String[] args) {
@@ -69,6 +71,26 @@ public class Main {
         }else{
             System.out.println("Company not found.");
         }
-    
+
+         Admin admin=new Admin(1, "Placement Officer", "Placement");
+
+         AdminService adminService=new AdminService();
+         adminService.addAdmin(admin);
+         adminService.viewAdmin();
+         
+
+         Admin foundAdmin=adminService.getAdminById(1);
+         if(foundAdmin!=null){
+            foundAdmin.displayAdmin();
+         }else{
+            
+            System.out.println("Admin not found.");
+         }
+
+         adminService.updateApplicationStatus(applicationService, 1, "Selected");
+         applicationService.viewApplications();
+
+         companyService.updateApplicationStatus(applicationService, 1, "shortlisted");
+         applicationService.viewApplications();
     } 
 }

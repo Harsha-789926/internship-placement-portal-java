@@ -28,4 +28,13 @@ public class CompanyService {
         return null;
 
     }
+
+    public void updateApplicationStatus(
+        ApplicationService applicationService,
+        int applicationId,
+        String newStatus) {
+
+    applicationService.updateStatus(applicationId, newStatus);
+
+}
 }
