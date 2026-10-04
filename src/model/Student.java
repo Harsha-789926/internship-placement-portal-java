@@ -3,15 +3,20 @@ package model;
 public class Student {
      private String name;
      private int id;
-     private String branch;
+     private String email;
+     private String password;
+     private int branchId;
      private double cgpa;
-     private String skills;
-     public Student(String name,int id,String branch,double cgpa,String skills){
+     private String resumePath;
+
+     public Student(String name,int id,String email,String password,int branchId,double cgpa,String resumePath){
         this.name=name;
+        this.email=email;
+        this.password=password;
         setCgpa(cgpa);
         this.id=id;
-        this.branch=branch;
-        this.skills=skills;
+        this.branchId=branchId;
+            this.resumePath=resumePath;
     }
 
   
@@ -27,11 +32,18 @@ public class Student {
     public void setName(String name) {
         this.name=name;
     }
-    public void setBranch(String branch) {
-        this.branch=branch;
+    public void setBranchId(int branchId) {
+        this.branchId=branchId;
     }
-    public void setSkills(String skills) {
-        this.skills=skills;
+    public void setResumePath(String resumePath) {
+        this.resumePath=resumePath;
+    }
+
+    public void setEmail(String email) {
+        this.email=email;
+    }
+    public void setPassword(String password) {
+        this.password=password;
     }
 
 
@@ -44,19 +56,27 @@ public class Student {
     public int  getId() {
         return id;
     }
-    public String  getBranch() {
-        return branch;
+    public int  getBranchId() {
+        return branchId;
     }
-    public String  getSkills() {
-        return skills;
+    public String  getResumePath() {
+        return resumePath;
     }
+    public String  getEmail() {
+        return email;
+    }
+    public String  getPassword() {
+        return password;
+    }
+    
 
     public void displayStudent() {
      System.out.println("Student Name:"+getName());
      System.out.println("Student Id:"+getId());
-     System.out.println("Branch:"+getBranch());
+     System.out.println("Branch:"+getBranchId());
      System.out.println("CGPA:"+getCgpa());
-     System.out.println("Skills:"+getSkills());
+     System.out.println("Resume Path:"+getResumePath());
+     System.out.println("Email:"+getEmail());
 
 }
 }

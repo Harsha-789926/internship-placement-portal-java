@@ -1,1 +1,9 @@
+# Compiled files
 *.class
+out/
+
+# MySQL Connector/J
+lib/*.jar
+
+# Local database credentials
+src/util/DBConnection.java
