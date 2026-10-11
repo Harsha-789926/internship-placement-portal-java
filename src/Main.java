@@ -40,11 +40,29 @@ public class Main {
         // Job job2 = new Job(2, "Data Analyst", "Data Inc", 
         // 9.0, "SQL");
 
-        
-
+      
+    
          StudentService service=new StudentService();
         //  service.addStudent(student);
          service.viewStudents();
+
+        //  Student student = service.getStudentById(3);
+        //  if (student != null) {
+        //            student.displayStudent();
+        //     } else {
+        //            System.out.println("Student not found.");
+        //  }
+         Student student = service.getStudentById(9999);
+        //  service.updateStudentCgpa(3, 15.0);
+         
+        if (student == null) {
+    System.out.println("Deletion verified: Student does not exist.");
+} else {
+    System.out.println("Student still exists.");
+}
+        //  service.deleteStudent(9999);
+
+
 
         //  JobService jobService = new JobService();
         //  jobService.addJob(job1);
@@ -114,5 +132,18 @@ public class Main {
 //             System.out.println("Error occurred while establishing database connection.");
 //             System.out.println(e.getMessage() );
 //          }
+
+//   Student testStudent = new Student(
+//     "Test Student",
+//     9999,
+//     "test9999@example.com",
+//     "test123",
+//     1,
+//     7.5,
+//     null
+// );
+
+// service.addStudent(testStudent);
+
  } 
  }
